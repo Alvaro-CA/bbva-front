@@ -10,11 +10,9 @@ import {
 } from './counterSlice';
 import styles from './Counter.module.css';
 import styled from 'styled-components';
-import { Grid } from '@mui/material';
-import { theme } from '../../config/theme';
 
-const Container = styled(Grid)`
-  background: ${p => theme.palette.primary}
+const Container = styled.div`
+  background: ${props => props.theme.palette.primary.main};
 `
 
 export function Counter() {
