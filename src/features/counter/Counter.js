@@ -9,6 +9,13 @@ import {
   selectCount,
 } from './counterSlice';
 import styles from './Counter.module.css';
+import styled from 'styled-components';
+import { Grid } from '@mui/material';
+import { theme } from '../../config/theme';
+
+const Container = styled(Grid)`
+  background: ${p => theme.palette.primary}
+`
 
 export function Counter() {
   const count = useSelector(selectCount);
@@ -18,6 +25,7 @@ export function Counter() {
   const incrementValue = Number(incrementAmount) || 0;
 
   return (
+    <Container>
     <div>
       <div className={styles.row}>
         <button
@@ -63,5 +71,6 @@ export function Counter() {
         </button>
       </div>
     </div>
+    </Container>
   );
 }
