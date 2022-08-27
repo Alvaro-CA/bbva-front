@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import App from './App';
 import './index.css';
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './config/theme';
+import { theme } from './config/theme/theme';
+import { ThemeProvider } from 'styled-components';
+import { BrowserRouter } from 'react-router-dom';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -14,7 +15,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ThemeProvider>
     </Provider>
   </React.StrictMode>
