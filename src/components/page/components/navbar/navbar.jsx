@@ -35,13 +35,14 @@ const LogoImage = styled.img`
   width: 100%;
   cursor: pointer;
 `
-const LinkWrapper = styled.p`
+const LinkWrapper = styled.a`
   color: white;
   transition: .5s;
   margin-left: 8px;
   margin-right: 8px;
   padding: 15px 30px;
   cursor: pointer;
+  text-decoration: none;
 
   :hover{
     background: ${props => props.theme.palette.secondary.dark};
@@ -51,10 +52,12 @@ const LinkWrapper = styled.p`
 const Navbar = () => {
   const listRoutes = [
     {
-      name: "INICIO"
+      name: "INICIO",
+      route: "/"
     },
     {
-      name: 'AFORO'
+      name: 'AFORO',
+      route: "/aforo"
     }
   ]
   return (
@@ -65,7 +68,7 @@ const Navbar = () => {
         </WrapperHead>
         <WrapperRoutes>
           {listRoutes.map(item => (
-            <LinkWrapper>{item.name}</LinkWrapper>
+            <LinkWrapper key={item.name} href={item.route}>{item.name}</LinkWrapper>
           ))}
         </WrapperRoutes>
         <WrapperHead>
