@@ -7,6 +7,7 @@ const ContainerButton = styled.button`
     padding: 15px 40px;
     box-sizing: border-box;
     border-radius: 8px;
+    cursor: pointer;
     border: 2px solid ${props => props.theme.palette.secondary.dark};
 
     background: ${props => {
