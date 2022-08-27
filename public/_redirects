@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/aforo"
+  to = "/aforo"
+  status = 200
+
