@@ -7,7 +7,7 @@ import Aforo from './features/aforo/aforo';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Landing />} />
+      <Route path='/' element={<Aforo />} />
       <Route path='/aforo' element={<Aforo />} />
       <Route path='/*' element={<>Página no encontrada</>} />
     </Routes>
