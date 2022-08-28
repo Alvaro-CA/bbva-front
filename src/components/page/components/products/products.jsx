@@ -11,6 +11,7 @@ function Products (){
     flex-direction: column;
     width: 200 px;
     align-items: center;
+    margin-left: 30px;
     `
 
     const ImgProducto = styled.img`
@@ -19,7 +20,12 @@ function Products (){
 
     const ContainerProducts = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap ;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 30px;
+
     `
 
     const TextProducto = styled.div`

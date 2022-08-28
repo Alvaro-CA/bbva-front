@@ -1,13 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
+import imageBanner from '../../../assets/images/img2.jpg';
 
 function Banner1 (){
+
+    const ContainerBanner = styled.div`
+    display:flex;
+    flex-direction: row;
+
+    `
 
     const ContainerBannerLeft = styled.div`
     background-color: rgb(3 105 161);
     height: 550px;
     z-index:1;
-    clip-path: polygon(60% 0, 45% 100%, 0 100%, 0 0%);
+    clip-path: polygon(100% 0, 80% 100%, 0 100%, 0 0%);
+    display:flex;
+    flex-direction: column;
+    position: absolute;
+    top:82px;
+    left:0px;
+    width: 55%;
+
+    
     `
 
 
@@ -17,6 +32,9 @@ function Banner1 (){
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: 90px;
+    margin-top: 90px;
+
     `
 
     const TextBanner1= styled.h3`
@@ -64,25 +82,26 @@ function Banner1 (){
    `
     
     const ContainerBannerRight = styled.div`
-      background-image: url(../../../assets/images/img2.jpg);
-      background-size:200px; 
-      background-repeat:no-repeat; 
-      background-position:right bottom;
-      width:30px;
+      background-image: url(${imageBanner});
+      width: 100%;
+      height: 550px;
+      background-repeat: no-repeat; 
+      background-position: right bottom;    
+
       `
 
    return (
-    <>
-    <ContainerBannerLeft>
-        <ContainerBannerText>
-            <TextBanner1>Seguro de Bienes</TextBanner1>
-            <TextBanner2>Descubre nuestro nuevo</TextBanner2>
-            <TextBanner3>Seguro Hogar Total</TextBanner3>
-            <TextBanner4>Hecho 100% a tu medida para que protejas lo que tanto esfuerzo te costó tener.</TextBanner4>
-        </ContainerBannerText>
-    </ContainerBannerLeft>
-    <ContainerBannerRight></ContainerBannerRight>
-    </>
+    <ContainerBanner>
+        <ContainerBannerLeft>
+            <ContainerBannerText>
+                <TextBanner1>Seguro de Bienes</TextBanner1>
+                <TextBanner2>Descubre nuestro nuevo</TextBanner2>
+                <TextBanner3>Seguro Hogar Total</TextBanner3>
+                <TextBanner4>Hecho 100% a tu medida para que protejas lo que tanto esfuerzo te costó tener.</TextBanner4>
+            </ContainerBannerText>
+        </ContainerBannerLeft>
+        <ContainerBannerRight></ContainerBannerRight>
+    </ContainerBanner>
    )
 }
 
