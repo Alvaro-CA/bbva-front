@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 import Page from '../../components/page/page'
 import Ubi from "./components/ubi";
@@ -149,6 +149,7 @@ const StatusBattery = styled.div`
   animation: ${UpToDown} 4s linear infinite;
   background: white;
 `
+const Img = styled.img``
 
 const Aforo = () =>{
 
@@ -166,7 +167,7 @@ const Aforo = () =>{
           <ContainerHeader>
             <Ubi>
               <WrapperTitle><h1>Bienvenido</h1>Hoy te encuentras en:<AgencyText>San Isidro</AgencyText></WrapperTitle>
-              <img src={iconMap}/>
+              <Img src={iconMap}/>
             </Ubi>
             <Agency>
               <InfoAgency>
@@ -174,7 +175,7 @@ const Aforo = () =>{
                 <AgencyText>San Isidro</AgencyText>
                 <div><b>Estado : </b>45 / 50</div>
               </InfoAgency>
-              <img src={agency}/>
+              <Img src={agency}/>
             </Agency>
             <Battery> 
                 <StatusBattery aforo="red" />
