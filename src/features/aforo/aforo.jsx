@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Page from '../../components/page/page'
 import CircularChart from '../../components/charts/circular-chart'
 import SelectBBVA from "../../components/select/select";
+import Map from "./components/mapa";
 
 const Container= styled.div`
   display: flex;
@@ -20,6 +21,10 @@ const ContainerFilters= styled.div`
   width: 50%;
   box-sizing: border-box;
 `
+const ContainerMap= styled.div`
+  width: 10px;
+  height:10px;
+`  
 
 const Aforo = () =>{
 
@@ -40,6 +45,9 @@ const Aforo = () =>{
           <ContainerFilters>
             <SelectBBVA options={options}/>
           </ContainerFilters>
+          <ContainerMap>
+            <Map/>
+          </ContainerMap>
         </Container>
       </Page>
     )
