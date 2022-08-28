@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Page from '../../components/page/page'
 import Ubi from "./components/ubi";
@@ -152,28 +152,57 @@ const StatusBattery = styled.div`
 const Img = styled.img``
 
 const Aforo = () =>{
-
+  const [dataAgency, setDataAgency] = useState([])
   const url = 'https://bbva-backend20220827172559.azurewebsites.net/api/Agencias'
 
-  React.useEffect(() => {
+  const fillData = (data) => {
+    console.log(data)
+    // setDataSanIsidro(data.filter(item => item.idUbigeo == "150131")
+  }
+
+  const delay = () => {
+    return new Promise(resolve => setTimeout(resolve, 5000));
+  };
+  
+  const mutation = async () => {
     axios.get(url).then((response) => {
-      console.log(response.data)
+      fillData(response.data)
+      setDataAgency(response.data)
     });
-  }, []);
+  };
+  
+  const someFuction = async () => {
+    await mutation();
+    await delay();
+    // await mutation();
+  };
+  
+  someFuction();
 
     return(
       <Page>
         <Container>
           <ContainerHeader>
             <Ubi>
-              <WrapperTitle><h1>Bienvenido</h1>Hoy te encuentras en:<AgencyText>San Isidro</AgencyText></WrapperTitle>
+              <WrapperTitle>
+                <h1>Bienvenido</h1>
+                Hoy te encuentras en:
+                <AgencyText>
+                  San Isidro
+                </AgencyText>
+              </WrapperTitle>
               <Img src={iconMap}/>
             </Ubi>
             <Agency>
               <InfoAgency>
                 <h3>La agencia más cercana es:</h3>
                 <AgencyText>San Isidro</AgencyText>
-                <div><b>Estado : </b>45 / 50</div>
+                <div>
+                  <b>Estado : </b>
+                  {dataAgency.map(item => (
+                    <>{item.idUbigeo == "150131" && item.nombreAgencia == "SAN ISIDRO" && <>{item.capacidadActual} / {item.aforo}</>}</>
+                  ))}
+                </div>
               </InfoAgency>
               <Img src={agency}/>
             </Agency>
@@ -188,31 +217,42 @@ const Aforo = () =>{
                 <THead>Aforo</THead>
                 <THead>Actual</THead>
                 <THead>Estado</THead>
+                <THead>ATM</THead>
+                <THead>Estado</THead>
               </TableHeaders>
-              <TableBody>
-                <TBody>Agencia San Isidro</TBody>
-                <TBody>50</TBody>
-                <TBody>45 / 50</TBody>
-                <TBody><StatusRed /></TBody>
-              </TableBody>
-              <TableBody>
-                <TBody>Agencia San Borja</TBody>
-                <TBody>35</TBody>
-                <TBody>5 / 35</TBody>
-                <TBody><StatusGreen /></TBody>
-              </TableBody>
-              <TableBody>
-                <TBody>Agencia La Victoria</TBody>
-                <TBody>45</TBody>
-                <TBody>30 / 45</TBody>
-                <TBody><StatusAmbar /></TBody>
-              </TableBody>
-              <TableBody>
-                <TBody>Agencia Miraflores</TBody>
-                <TBody>60</TBody>
-                <TBody>10 / 10</TBody>
-                <TBody><StatusGreen /></TBody>
-              </TableBody>
+              {dataAgency.map(item => (
+                <>{item.idUbigeo == "150131" && (
+                  <TableBody>
+                  <TBody>{item.nombreAgencia}</TBody>
+                  <TBody>{item.aforo}</TBody>
+                  <TBody>{item.capacidadActual} / {item.aforo}</TBody>
+                  <TBody>
+                    {item.color === "v" && <StatusGreen />}
+                    {item.color === "r" && <StatusRed />}
+                    {item.color === "a" && <StatusAmbar />}
+                  </TBody>
+                  <TBody>{item.capacidadCajeroActual}</TBody>
+                  <TBody>
+                    {item.colorCajero === "v" && <StatusGreen />}
+                    {item.colorCajero === "r" && <StatusRed />}
+                    {item.colorCajero === "a" && <StatusAmbar />}
+                  </TBody>
+                </TableBody>
+                )}</>
+              ))}
+              {/* {dataAgency.map(item => (
+                <TableBody>
+                  <TBody>{item.nombreAgencia}</TBody>
+                  <TBody>{item.aforo}</TBody>
+                  <TBody>{item.capacidadCajeroActual}</TBody>
+                  <TBody>{item.capacidadActual} / {item.aforo}</TBody>
+                  <TBody>
+                    {item.color === "v" && <StatusGreen />}
+                    {item.color === "r" && <StatusRed />}
+                    {item.color === "a" && <StatusAmbar />}
+                  </TBody>
+                </TableBody>
+              ))} */}
             </TableWrapper>
           </ContainerChart>
           <ContainerBottom>
